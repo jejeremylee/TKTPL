@@ -63,6 +63,7 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         wasRunning = running
+        // this boolean create unfocus state running true
         running = true
     }
 
