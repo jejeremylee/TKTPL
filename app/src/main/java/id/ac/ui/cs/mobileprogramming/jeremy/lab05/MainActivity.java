@@ -8,15 +8,18 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
     private ListView wifiList;
     private WifiManager wifiManager;
     private final int MY_PERMISSIONS_ACCESS_COARSE_LOCATION = 1;
     WifiReceiver wifiReceiver;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         scanButton.setOnClickListener(v -> {
             if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION)
-            != PackageManager.PERMISSION_GRANTED) {
+                    != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(
                         MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, MY_PERMISSIONS_ACCESS_COARSE_LOCATION);
             } else {
@@ -46,8 +49,9 @@ public class MainActivity extends AppCompatActivity {
                 registerReceiver(wifiReceiver, intentFilter);
                 wifiManager.startScan();
                 Toast.makeText(this, "Scanning WiFi ...", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
 
-}
+    }
